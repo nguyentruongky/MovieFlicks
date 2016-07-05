@@ -9,13 +9,17 @@
 import UIKit
 
 class MovieList: KViewBase {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var tableView: UITableView!
+    var movies = [Movie]()
+    
+    override func setupView() {
+        tableView.registerNib(UINib(nibName: "MovieTableCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "MovieTableCell")
     }
-    */
-
+    
+    func setup(movies: [Movie]) {
+        self.movies = movies
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+    }
 }

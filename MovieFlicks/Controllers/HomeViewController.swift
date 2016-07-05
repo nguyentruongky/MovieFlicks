@@ -10,26 +10,23 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var movieGridView: MovieGrid!
+    var currentPage = 1
+    var totalPage = 1
+    var movies = [Movie]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        print("start")
+        HomeViewCommunicator.fetchNowPlayingMovieAtPage(currentPage, successCompletion: { [unowned self] (movies, totalPage) in
+            
+            self.movies.appendContentsOf(movies)
+            self.movieGridView.setup(self.movies)
+            }) { (message) in
+                print(message)
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

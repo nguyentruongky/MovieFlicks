@@ -63,3 +63,62 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+Pods/Alamofire/LICENSE
+Pods/Alamofire/README.md
+Pods/Alamofire/Source/Alamofire.swift
+Pods/Alamofire/Source/Download.swift
+Pods/Alamofire/Source/Error.swift
+Pods/Alamofire/Source/Manager.swift
+Pods/Alamofire/Source/MultipartFormData.swift
+Pods/Alamofire/Source/NetworkReachabilityManager.swift
+Pods/Alamofire/Source/Notifications.swift
+Pods/Alamofire/Source/ParameterEncoding.swift
+Pods/Alamofire/Source/Request.swift
+Pods/Alamofire/Source/Response.swift
+Pods/Alamofire/Source/ResponseSerialization.swift
+Pods/Alamofire/Source/Result.swift
+Pods/Alamofire/Source/ServerTrustPolicy.swift
+Pods/Alamofire/Source/Stream.swift
+Pods/Alamofire/Source/Timeline.swift
+Pods/Alamofire/Source/Upload.swift
+Pods/Alamofire/Source/Validation.swift
+Pods/Headers/Private/Kingfisher/Kingfisher.h
+Pods/Kingfisher/LICENSE
+Pods/Kingfisher/README.md
+Pods/Kingfisher/Sources/AnimatedImageView.swift
+Pods/Kingfisher/Sources/Image.swift
+Pods/Kingfisher/Sources/ImageCache.swift
+Pods/Kingfisher/Sources/ImageDownloader.swift
+Pods/Kingfisher/Sources/ImagePrefetcher.swift
+Pods/Kingfisher/Sources/ImageTransition.swift
+Pods/Kingfisher/Sources/ImageView+Kingfisher.swift
+Pods/Kingfisher/Sources/Kingfisher.h
+Pods/Kingfisher/Sources/KingfisherManager.swift
+Pods/Kingfisher/Sources/KingfisherOptionsInfo.swift
+Pods/Kingfisher/Sources/Resource.swift
+Pods/Kingfisher/Sources/String+MD5.swift
+Pods/Kingfisher/Sources/ThreadHelper.swift
+Pods/Kingfisher/Sources/UIButton+Kingfisher.swift
+Pods/Pods.xcodeproj/project.pbxproj
+Pods/Target Support Files/Alamofire/Alamofire-dummy.m
+Pods/Target Support Files/Alamofire/Alamofire-prefix.pch
+Pods/Target Support Files/Alamofire/Alamofire-umbrella.h
+Pods/Target Support Files/Alamofire/Alamofire.modulemap
+Pods/Target Support Files/Alamofire/Alamofire.xcconfig
+Pods/Target Support Files/Alamofire/Info.plist
+Pods/Target Support Files/Kingfisher/Info.plist
+Pods/Target Support Files/Kingfisher/Kingfisher-dummy.m
+Pods/Target Support Files/Kingfisher/Kingfisher-prefix.pch
+Pods/Target Support Files/Kingfisher/Kingfisher-umbrella.h
+Pods/Target Support Files/Kingfisher/Kingfisher.modulemap
+Pods/Target Support Files/Kingfisher/Kingfisher.xcconfig
+Pods/Target Support Files/Pods-MovieFlicks/Info.plist
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks-acknowledgements.markdown
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks-acknowledgements.plist
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks-dummy.m
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks-frameworks.sh
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks-resources.sh
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks-umbrella.h
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks.debug.xcconfig
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks.modulemap
+Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks.release.xcconfig

@@ -10,12 +10,17 @@ import UIKit
 
 class MovieGrid: KViewBase {
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
+    @IBOutlet weak var collectionView: UICollectionView!
+    var movies: [Movie]!
 
+    override func setupView() {
+        collectionView.registerNib(UINib(nibName: "MovieCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "MovieCollectionCell")
+    }
+    
+    func setup(movies: [Movie]) {
+        self.movies = movies
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.reloadData()
+    }
 }

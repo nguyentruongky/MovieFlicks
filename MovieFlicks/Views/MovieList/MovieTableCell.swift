@@ -10,15 +10,17 @@ import UIKit
 
 class MovieTableCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var posterImageView: UIImageView!
+   
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var overviewLabel: UILabel!
+
+    func setup(movie: Movie) {
+        guard let poster = movie.poster else {
+            posterImageView.image = UIImage(named: "broken")
+            return
+        }
+        posterImageView.kf_showIndicatorWhenLoading = true
+        posterImageView.downloadImageWithUrlString(poster)
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
