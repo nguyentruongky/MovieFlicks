@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension MovieGrid : UICollectionViewDelegate, UICollectionViewDataSource {
+extension MovieGrid : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int { return 1 }
     
@@ -19,5 +19,10 @@ extension MovieGrid : UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MovieCollectionCell", forIndexPath: indexPath) as! MovieCollectionCell
         cell.setup(movies[indexPath.row])
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        return CGSize(width: 90, height: 120)
     }
 }

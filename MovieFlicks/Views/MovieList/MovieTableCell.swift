@@ -20,7 +20,9 @@ class MovieTableCell: UITableViewCell {
             posterImageView.image = UIImage(named: "broken")
             return
         }
+        titleLabel.text = movie.title
+        overviewLabel.text = movie.overview
         posterImageView.kf_showIndicatorWhenLoading = true
-        posterImageView.downloadImageWithUrlString(poster)
+        posterImageView.downloadImageWithUrlString("\(largePoster)\(poster)")
     }
 }

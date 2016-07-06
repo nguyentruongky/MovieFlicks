@@ -10,6 +10,15 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet var headerView: UIView!
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var headerTitleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    
+    
+    
     @IBOutlet weak var movieGridView: MovieGrid!
     var currentPage = 1
     var totalPage = 1

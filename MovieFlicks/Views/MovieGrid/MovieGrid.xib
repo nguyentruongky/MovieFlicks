@@ -35,30 +35,5 @@
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="vJR-Sh-8XA" customClass="MovieCollectionCell" customModule="MovieFlicks" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="207" height="120"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="207" height="120"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ROA-ot-RK2">
-                        <rect key="frame" x="0.0" y="0.0" width="207" height="120"/>
-                    </imageView>
-                </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            </view>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="ROA-ot-RK2" secondAttribute="trailing" id="cr8-SU-pir"/>
-                <constraint firstItem="ROA-ot-RK2" firstAttribute="top" secondItem="vJR-Sh-8XA" secondAttribute="top" id="gfU-6v-TqK"/>
-                <constraint firstAttribute="bottom" secondItem="ROA-ot-RK2" secondAttribute="bottom" id="rJi-9u-CXO"/>
-                <constraint firstItem="ROA-ot-RK2" firstAttribute="leading" secondItem="vJR-Sh-8XA" secondAttribute="leading" id="whx-Wd-Wxg"/>
-            </constraints>
-            <size key="customSize" width="207" height="120"/>
-            <connections>
-                <outlet property="posterImageView" destination="ROA-ot-RK2" id="BpR-t2-6P3"/>
-            </connections>
-            <point key="canvasLocation" x="594.5" y="143"/>
-        </collectionViewCell>
     </objects>
 </document>

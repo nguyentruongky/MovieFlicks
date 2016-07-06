@@ -19,7 +19,7 @@ class MovieCollectionCell: UICollectionViewCell {
         }
         
         posterImageView.kf_showIndicatorWhenLoading = true
-        posterImageView.downloadImageWithUrlString(poster)
+        posterImageView.downloadImageWithUrlString("\(largePoster)\(poster)")
     }
     
 }
