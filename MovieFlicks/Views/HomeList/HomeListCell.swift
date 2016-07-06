@@ -11,8 +11,22 @@ import UIKit
 class HomeListCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var sectionTitleLabel: UILabel!
-
     @IBOutlet weak var showListButton: UIButton!
+    
+    lazy var movies = [Movie]()
+    var title: String!
+    var delegate : HomeSectionDelegate!
+    
+    func setupData(movies: [Movie], title: String) {
+        showListButton.addTarget(self, action: #selector(viewList), forControlEvents: .TouchUpInside)
+        self.movies = movies
+        sectionTitleLabel.text = title
+        self.title = title
+        collectionView.reloadData()
+    }
+    
+    func viewList() {
+        delegate.showListWithData(movies, title: title)
+    }
 }

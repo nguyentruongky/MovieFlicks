@@ -11,4 +11,9 @@ import UIKit
 class HomeCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImageView: UIImageView!
+    
+    func setupData(movie: Movie) {
+        
+        posterImageView.downloadImageWithUrlString("\(smallPoster)\(movie.poster!)")
+    }
 }

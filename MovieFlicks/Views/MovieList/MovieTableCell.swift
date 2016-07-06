@@ -23,6 +23,6 @@ class MovieTableCell: UITableViewCell {
         titleLabel.text = movie.title
         overviewLabel.text = movie.overview
         posterImageView.kf_showIndicatorWhenLoading = true
-        posterImageView.downloadImageWithUrlString("\(largePoster)\(poster)")
+        posterImageView.downloadImageWithUrlString("\(smallPoster)\(poster)")
     }
 }

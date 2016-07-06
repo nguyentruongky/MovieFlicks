@@ -21,7 +21,19 @@ struct HomeViewCommunicator {
             }) { (message) in
                 failCompletion?(message: message)
         }
+    }
+    
+    static func fetchTopRatedMovieAtPage(page: Int, successCompletion: (movies: [Movie], totalPage: Int) -> Void, failCompletion: ((message: String) -> Void)?) {
         
+        let api = "https://api.themoviedb.org/3/movie/top_rated"
+        Communicator.get(api, params: ["page": String(page)], successCompletion: { (rawData) in
+            
+            let data = parseData(rawData)
+            successCompletion(movies: data.movies, totalPage: data.totalPage)
+        }) { (message) in
+            failCompletion?(message: message)
+        }
+
     }
     
     static private func parseData(rawData: AnyObject) -> (movies: [Movie], totalPage: Int) {
