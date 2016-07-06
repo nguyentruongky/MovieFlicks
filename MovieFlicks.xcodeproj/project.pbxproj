@@ -31,8 +31,8 @@
 		26ECC7751D2DBD4200CA5410 /* HomeControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ECC7711D2DBD4200CA5410 /* HomeControllerDelegate.swift */; };
 		26ECC7761D2DBD4200CA5410 /* HomeViewCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ECC7721D2DBD4200CA5410 /* HomeViewCommunicator.swift */; };
 		26ECC7771D2DBD4200CA5410 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ECC7731D2DBD4200CA5410 /* HomeViewController.swift */; };
-		26ECC7791D2DBD5200CA5410 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ECC7781D2DBD5200CA5410 /* MovieDetailViewController.swift */; };
 		26ECC77B1D2DBF6E00CA5410 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ECC77A1D2DBF6E00CA5410 /* Enum.swift */; };
+		26ECC77D1D2DD0D000CA5410 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ECC77C1D2DD0D000CA5410 /* MovieListViewController.swift */; };
 		E9F9B627DC062D04AF13B57C /* Pods_MovieFlicks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FF16474984D4E87BEB6061 /* Pods_MovieFlicks.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +64,8 @@
 		26ECC7711D2DBD4200CA5410 /* HomeControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeControllerDelegate.swift; sourceTree = "<group>"; };
 		26ECC7721D2DBD4200CA5410 /* HomeViewCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCommunicator.swift; sourceTree = "<group>"; };
 		26ECC7731D2DBD4200CA5410 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		26ECC7781D2DBD5200CA5410 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		26ECC77A1D2DBF6E00CA5410 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		26ECC77C1D2DD0D000CA5410 /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		97FF16474984D4E87BEB6061 /* Pods_MovieFlicks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieFlicks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA46AF79D2826AA16C459A46 /* Pods-MovieFlicks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieFlicks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieFlicks/Pods-MovieFlicks.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,7 +217,6 @@
 		26ECC76F1D2DBD4200CA5410 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				26ECC7781D2DBD5200CA5410 /* MovieDetailViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -235,6 +234,7 @@
 		26ECC7741D2DBD4200CA5410 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				26ECC77C1D2DD0D000CA5410 /* MovieListViewController.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -385,12 +385,12 @@
 				26A921A31D2B1358003D4D09 /* MovieGrid.swift in Sources */,
 				260BCE9B1D2DB11A006101D0 /* HomeListCell.swift in Sources */,
 				260BCE9D1D2DB142006101D0 /* HomeCollectionCell.swift in Sources */,
+				26ECC77D1D2DD0D000CA5410 /* MovieListViewController.swift in Sources */,
 				26ECC7761D2DBD4200CA5410 /* HomeViewCommunicator.swift in Sources */,
 				26A921861D2AA459003D4D09 /* AppDelegate.swift in Sources */,
 				26A921A11D2B12EC003D4D09 /* KViewBase.swift in Sources */,
 				26ECC7751D2DBD4200CA5410 /* HomeControllerDelegate.swift in Sources */,
 				26A921A71D2B13E9003D4D09 /* Movie.swift in Sources */,
-				26ECC7791D2DBD5200CA5410 /* MovieDetailViewController.swift in Sources */,
 				26ECC77B1D2DBF6E00CA5410 /* Enum.swift in Sources */,
 				26A921B71D2B2478003D4D09 /* MovieTableCell.swift in Sources */,
 			);
