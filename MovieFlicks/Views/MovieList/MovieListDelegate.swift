@@ -20,6 +20,11 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        delegate.showMovieDetail(movies[indexPath.row])
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 150
     }

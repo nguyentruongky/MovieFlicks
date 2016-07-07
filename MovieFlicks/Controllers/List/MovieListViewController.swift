@@ -25,6 +25,8 @@ class MovieListViewController: UIViewController {
         
         navigationController?.navigationBarHidden = false 
         movieList.setup(movies)
+        movieList.delegate = self
+        movieGrid.delegate = self
         movieGrid.hidden = true
     }
     
@@ -32,7 +34,7 @@ class MovieListViewController: UIViewController {
         
         viewMode = viewMode == .ListView ? .GridView : .ListView
         viewMode == .ListView ? showListView() : showGridView()
-        viewModeButton.image = viewMode == .ListView ? UIImage(named: "listview") : UIImage(named: "gridview")
+        viewModeButton.image = viewMode == .ListView ? UIImage(named: "gridview") : UIImage(named: "listview")
     }
     
     func showListView() {

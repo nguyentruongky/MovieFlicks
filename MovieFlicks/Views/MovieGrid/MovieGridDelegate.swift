@@ -21,6 +21,10 @@ extension MovieGrid : UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        delegate.showMovieDetail(movies[indexPath.row])
+    }
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         return CGSize(width: 100, height: 120)

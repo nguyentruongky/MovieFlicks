@@ -22,7 +22,7 @@ class MovieDetailViewController: UIViewController {
     
     var data: Movie!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = false
     }
     
@@ -42,9 +42,11 @@ class MovieDetailViewController: UIViewController {
         
         MovieDetailCommunication.getDetailWithMovieId(data.id!, successHandler: { (runTime) in
             let h = runTime / 60
+            let hour = h > 0 ? "\(h) hr" : ""
+            
             let m = runTime % 60
             let min = m % 60 == 0 ? "" : "\(m) mins"
-            self.timeLabel.text = "\(h) hr \(min)"
+            self.timeLabel.text = "\(hour) \(min)"
             }, failHandler: nil)
     }
     

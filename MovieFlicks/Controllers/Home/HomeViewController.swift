@@ -10,9 +10,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var viewHeaderButton: UIButton!
     @IBOutlet var headerView: UIView!
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    var theHottestMovie : Movie!
     
     lazy var data : [(movies: [Movie], title: String)] = [(movies: [Movie], title: String)]()
     
@@ -23,13 +25,17 @@ class HomeViewController: UIViewController {
         fetchTopRatedMovies()
         navigationController?.navigationBarHidden = true
     }
+
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = true
+    }
     
     func fetchNowPlayingMovies() {
         HomeViewCommunicator.fetchNowPlayingMovieAtPage(1, successCompletion: { [unowned self] (movies, totalPage) in
             
             if movies.count > 0 {
-                let movie = movies[0]
-                self.setupHeaderView(movie)
+                self.theHottestMovie = movies[0]
+                self.setupHeaderView(self.theHottestMovie)
             }
             
             var nowPlaying = movies
@@ -39,12 +45,6 @@ class HomeViewController: UIViewController {
         }) { (message) in
             print(message)
         }
-    }
-    
-    func setupHeaderView(movie: Movie) {
-        
-        tableView.tableHeaderView = self.headerView
-        headerImageView.downloadImageWithUrlString("\(largePoster)\(movie.poster!)")
     }
     
     func fetchTopRatedMovies() {
@@ -57,6 +57,17 @@ class HomeViewController: UIViewController {
         }
     }
 
+    func setupHeaderView(movie: Movie) {
+        
+        tableView.tableHeaderView = self.headerView
+        headerImageView.downloadImageWithUrlString("\(largePoster)\(movie.poster!)")
+        viewHeaderButton.addTarget(self, action: #selector(viewHottestMovie), forControlEvents: .TouchUpInside)
+    }
+    
+    func viewHottestMovie() {
+        showMovieDetail(theHottestMovie)
+    }
+    
     
     
 

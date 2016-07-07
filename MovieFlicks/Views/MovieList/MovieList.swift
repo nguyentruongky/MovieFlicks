@@ -12,6 +12,8 @@ class MovieList: KViewBase {
     @IBOutlet weak var tableView: UITableView!
     var movies = [Movie]()
     
+    var delegate: HomeSectionDelegate!
+    
     override func setupView() {
         tableView.registerNib(UINib(nibName: "MovieTableCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "MovieTableCell")
     }
