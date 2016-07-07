@@ -12,9 +12,9 @@ import Kingfisher
 
 struct Communicator {
     
-    static func get(api: String, params: [String: AnyObject], successCompletion: (rawData: AnyObject) -> Void, failCompletion: ((message: String) -> Void)?) {
+    static func get(api: String, params: [String: AnyObject]?, successCompletion: (rawData: AnyObject) -> Void, failCompletion: ((message: String) -> Void)?) {
         
-        var parameters = params
+        var parameters = params == nil ? [String: AnyObject]() : params!
         parameters["api_key"] = apiKey
         
         Alamofire.request(.GET, api, parameters: parameters)

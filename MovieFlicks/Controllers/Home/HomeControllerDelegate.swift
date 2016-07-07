@@ -30,7 +30,9 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: HomeSectionDelegate {
     
     func showMovieDetail(movie: Movie) {
-        
+        let controller = UIStoryboard(name: sb_Main, bundle: nil).instantiateViewControllerWithIdentifier("MovieDetailViewController") as! MovieDetailViewController
+        controller.data = movie
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func showListWithData(movies: [Movie], title: String) {
