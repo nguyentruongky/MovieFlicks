@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol LoadMoreMoviesDelegate {
-    
-    func loadMore()
-}
-
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

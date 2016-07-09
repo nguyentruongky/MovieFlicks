@@ -13,10 +13,11 @@ class MovieGrid: KViewBase {
     @IBOutlet weak var collectionView: UICollectionView!
     var movies: [Movie]!
     var delegate: HomeSectionDelegate!
-    var loadMoreDelegate : LoadMoreMoviesDelegate!
+    var loadMoreDelegate : LoadMoviesDelegate!
 
     override func setupView() {
         collectionView.registerNib(UINib(nibName: "MovieCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "MovieCollectionCell")
+    
     }
     
     func setup(movies: [Movie]) {

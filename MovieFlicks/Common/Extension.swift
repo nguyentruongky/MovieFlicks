@@ -8,6 +8,7 @@
 
 import UIKit
 import Whisper
+import PKHUD
 
 extension UIViewController {
     
@@ -26,7 +27,11 @@ extension UIViewController {
         }
     }
     
-    
+    func showLoading(show: Bool) {
+        show ?
+            HUD.show(.Progress) :
+            HUD.hide()
+    }
 }
 
 extension UIView {

@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
         fetchNowPlayingMovies()
         fetchTopRatedMovies()
         navigationController?.navigationBarHidden = true
+        showLoading(true)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -45,8 +46,9 @@ class HomeViewController: UIViewController {
             nowPlaying.removeAtIndex(0)
             self.data.append((nowPlaying, "Now Playing"))
             self.tableView.reloadData()
+            self.showLoading(false)
         }) { (message) in
-            
+            self.showLoading(false)
             self.showErrorViewWithMessage(message)
         }
     }
@@ -56,7 +58,9 @@ class HomeViewController: UIViewController {
             
             self.data.append((movies, "Top Rated"))
             self.tableView.reloadData()
+            self.showLoading(false)
         }) { (message) in
+            self.showLoading(false)
             self.showErrorViewWithMessage(message)
         }
     }

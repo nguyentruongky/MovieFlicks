@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension MovieListViewController: HomeSectionDelegate, LoadMoreMoviesDelegate {
+extension MovieListViewController: HomeSectionDelegate, LoadMoviesDelegate {
     
     func showMovieDetail(movie: Movie) {
         let detail = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MovieDetailViewController") as! MovieDetailViewController
@@ -41,5 +41,27 @@ extension MovieListViewController: HomeSectionDelegate, LoadMoreMoviesDelegate {
             }) { [unowned self] (message) in
                 self.showErrorViewWithMessage(message)
         }
+    }
+    
+    func reloadMovie(complete: (() -> ())?) {
+        
+        Communicator.get(api, params: ["page": String(1)], successCompletion: { [unowned self] (rawData) in
+            self.isLoading = false
+            self.currentPage += 1
+            let data = HomeViewCommunicator.parseData(rawData)
+            if self.currentPage >= data.totalPage {
+                self.shouldLoadMore = false
+            }
+            
+            self.movies = data.movies
+            self.viewMode == ViewMode.GridView ?
+                self.movieGrid.setup(self.movies) :
+                self.movieList.setup(self.movies)
+            
+            complete?()
+        }) { [unowned self] (message) in
+            self.showErrorViewWithMessage(message)
+        }
+
     }
 }
