@@ -19,7 +19,10 @@ struct Communicator {
         
         Alamofire.request(.GET, api, parameters: parameters)
             .responseJSON { response in
-                guard let rawData = response.result.value else { failCompletion?(message: "fail"); return }
+                guard let rawData = response.result.value else {
+                    failCompletion?(message: response.result.error!.localizedDescription)
+                    return
+                }
                 successCompletion(rawData: rawData)
         }
     }

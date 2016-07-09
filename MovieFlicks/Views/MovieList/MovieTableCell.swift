@@ -11,10 +11,34 @@ import UIKit
 class MovieTableCell: UITableViewCell {
 
     @IBOutlet weak var posterImageView: UIImageView!
-   
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
 
+    @IBOutlet weak var imageLoading: UIActivityIndicatorView!
+    @IBOutlet weak var titleLoadingView: UIView!
+    @IBOutlet weak var titleLoading: UIActivityIndicatorView!
+    @IBOutlet weak var overviewLoading: UIActivityIndicatorView!
+    
+    func showLoading(show: Bool) {
+        
+        if show {
+            posterImageView.image = UIImage(named: posterPlaceHolderName)
+            imageLoading.startAnimating()
+            titleLoading.startAnimating()
+            overviewLoading.startAnimating()
+            imageLoading.hidden = false 
+            titleLabel.text = ""
+            overviewLabel.text = ""
+        }
+        else {
+            imageLoading.stopAnimating()
+            titleLoading.stopAnimating()
+            overviewLoading.stopAnimating()
+        }
+        
+        titleLoadingView.hidden = !show
+    }
+    
     func setup(movie: Movie) {
         guard let poster = movie.poster else {
             posterImageView.image = UIImage(named: "broken")

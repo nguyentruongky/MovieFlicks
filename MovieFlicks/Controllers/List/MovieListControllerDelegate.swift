@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension MovieListViewController: HomeSectionDelegate {
+extension MovieListViewController: HomeSectionDelegate, LoadMoreMoviesDelegate {
     
     func showMovieDetail(movie: Movie) {
         let detail = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MovieDetailViewController") as! MovieDetailViewController
@@ -17,7 +17,29 @@ extension MovieListViewController: HomeSectionDelegate {
     }
     
     // empty func
-    func showListWithData(movies: [Movie], title: String) {
+    func showListWithData(movies: [Movie], title: String, api: String) {
         
+    }
+    
+    func loadMore() {
+        
+        guard shouldLoadMore && !isLoading else { return }
+        isLoading = true
+        Communicator.get(api, params: ["page": String(currentPage)], successCompletion: { [unowned self] (rawData) in
+            self.isLoading = false
+            self.currentPage += 1
+            let data = HomeViewCommunicator.parseData(rawData)
+            if self.currentPage >= data.totalPage {
+                self.shouldLoadMore = false
+            }
+            
+            self.movies.appendContentsOf(data.movies)
+            self.movieList.setup(self.movies)
+            
+            }) { [unowned self] (message) in
+                self.isLoading = false
+                let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
 }

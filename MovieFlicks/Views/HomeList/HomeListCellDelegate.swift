@@ -10,7 +10,7 @@ import UIKit
 
 protocol HomeSectionDelegate {
  
-    func showListWithData(movies: [Movie], title: String)
+    func showListWithData(movies: [Movie], title: String, api: String)
     
     func showMovieDetail(movie: Movie)
 }

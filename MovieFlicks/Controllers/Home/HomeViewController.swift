@@ -15,6 +15,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     var theHottestMovie : Movie!
+    var listKind = [ListKind.NowPlaying, ListKind.TopRated]
+    var apis = ["https://api.themoviedb.org/3/movie/now_playing",
+                "https://api.themoviedb.org/3/movie/top_rated"]
     
     lazy var data : [(movies: [Movie], title: String)] = [(movies: [Movie], title: String)]()
     
@@ -32,7 +35,7 @@ class HomeViewController: UIViewController {
     
     func fetchNowPlayingMovies() {
         HomeViewCommunicator.fetchNowPlayingMovieAtPage(1, successCompletion: { [unowned self] (movies, totalPage) in
-            
+
             if movies.count > 0 {
                 self.theHottestMovie = movies[0]
                 self.setupHeaderView(self.theHottestMovie)
@@ -43,7 +46,9 @@ class HomeViewController: UIViewController {
             self.data.append((nowPlaying, "Now Playing"))
             self.tableView.reloadData()
         }) { (message) in
-            print(message)
+            
+            let errorView = ErrorView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 10), message: message)
+            self.view.addSubview(errorView)
         }
     }
     

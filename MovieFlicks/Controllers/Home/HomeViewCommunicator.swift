@@ -36,7 +36,7 @@ struct HomeViewCommunicator {
 
     }
     
-    static private func parseData(rawData: AnyObject) -> (movies: [Movie], totalPage: Int) {
+    static func parseData(rawData: AnyObject) -> (movies: [Movie], totalPage: Int) {
         let totalPage = rawData["total_pages"] as! Int
         let results = rawData["results"] as! [AnyObject]
         var movies = [Movie]()

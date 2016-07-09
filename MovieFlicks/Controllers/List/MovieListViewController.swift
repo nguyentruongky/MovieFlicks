@@ -15,9 +15,12 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var viewModeButton: UIBarButtonItem!
 
     lazy var movies = [Movie]()
+    var currentPage = 1
+    var shouldLoadMore = true
+    var isLoading = false
     var api: String!
-    internal var currentPage = 1
-    internal var totalPage = 2
+    var delegate: HomeSectionDelegate!
+    
     internal var viewMode = ViewMode.ListView
     
     override func viewDidLoad() {
@@ -26,6 +29,9 @@ class MovieListViewController: UIViewController {
         navigationController?.navigationBarHidden = false 
         movieList.setup(movies)
         movieList.delegate = self
+        movieList.loadMoreDelegate = self
+        movieList.api = api
+        
         movieGrid.delegate = self
         movieGrid.hidden = true
     }

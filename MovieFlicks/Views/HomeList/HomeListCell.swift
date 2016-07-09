@@ -17,6 +17,7 @@ class HomeListCell: UITableViewCell {
     lazy var movies = [Movie]()
     var title: String!
     var delegate : HomeSectionDelegate!
+    var api: String!
     
     func setupData(movies: [Movie], title: String) {
         showListButton.addTarget(self, action: #selector(viewList), forControlEvents: .TouchUpInside)
@@ -27,6 +28,6 @@ class HomeListCell: UITableViewCell {
     }
     
     func viewList() {
-        delegate.showListWithData(movies, title: title)
+        delegate.showListWithData(movies, title: title, api: api)
     }
 }

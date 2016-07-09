@@ -13,6 +13,8 @@
 		260BCE9D1D2DB142006101D0 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BCE9C1D2DB142006101D0 /* HomeCollectionCell.swift */; };
 		260BCE9F1D2DB289006101D0 /* HomeListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BCE9E1D2DB289006101D0 /* HomeListCellDelegate.swift */; };
 		267A0F881D2EB2AE002C5BD2 /* MovieListControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0F871D2EB2AE002C5BD2 /* MovieListControllerDelegate.swift */; };
+		267A0F8B1D2EB57C002C5BD2 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267A0F8A1D2EB57C002C5BD2 /* ErrorView.xib */; };
+		267A0F8D1D2EB5CE002C5BD2 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A0F8C1D2EB5CE002C5BD2 /* ErrorView.swift */; };
 		26A921861D2AA459003D4D09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A921851D2AA459003D4D09 /* AppDelegate.swift */; };
 		26A9218B1D2AA459003D4D09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26A921891D2AA459003D4D09 /* Main.storyboard */; };
 		26A9218D1D2AA459003D4D09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26A9218C1D2AA459003D4D09 /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		260BCE9C1D2DB142006101D0 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		260BCE9E1D2DB289006101D0 /* HomeListCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListCellDelegate.swift; sourceTree = "<group>"; };
 		267A0F871D2EB2AE002C5BD2 /* MovieListControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListControllerDelegate.swift; sourceTree = "<group>"; };
+		267A0F8A1D2EB57C002C5BD2 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		267A0F8C1D2EB5CE002C5BD2 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		26A921821D2AA459003D4D09 /* MovieFlicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFlicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26A921851D2AA459003D4D09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26A9218A1D2AA459003D4D09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 			path = HomeList;
 			sourceTree = "<group>";
 		};
+		267A0F891D2EB574002C5BD2 /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				267A0F8A1D2EB57C002C5BD2 /* ErrorView.xib */,
+				267A0F8C1D2EB5CE002C5BD2 /* ErrorView.swift */,
+			);
+			path = ErrorView;
+			sourceTree = "<group>";
+		};
 		26A921791D2AA459003D4D09 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +190,7 @@
 		26A9219A1D2B12AF003D4D09 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				267A0F891D2EB574002C5BD2 /* ErrorView */,
 				260BCE981D2DB10A006101D0 /* HomeCollectionCell */,
 				260BCE991D2DB10A006101D0 /* HomeList */,
 				26A9219B1D2B12AF003D4D09 /* MovieGrid */,
@@ -321,6 +335,7 @@
 				26A9219E1D2B12BC003D4D09 /* MovieGrid.xib in Resources */,
 				26A921901D2AA459003D4D09 /* LaunchScreen.storyboard in Resources */,
 				26A9218D1D2AA459003D4D09 /* Assets.xcassets in Resources */,
+				267A0F8B1D2EB57C002C5BD2 /* ErrorView.xib in Resources */,
 				260BCE951D2DAB6E006101D0 /* MovieTableCell.xib in Resources */,
 				260BCE971D2DAD12006101D0 /* MovieCollectionCell.xib in Resources */,
 				26A9218B1D2AA459003D4D09 /* Main.storyboard in Resources */,
@@ -391,6 +406,7 @@
 				267A0F881D2EB2AE002C5BD2 /* MovieListControllerDelegate.swift in Sources */,
 				26A921B91D2B251C003D4D09 /* MovieListDelegate.swift in Sources */,
 				260BCE9F1D2DB289006101D0 /* HomeListCellDelegate.swift in Sources */,
+				267A0F8D1D2EB5CE002C5BD2 /* ErrorView.swift in Sources */,
 				26A921B51D2B245D003D4D09 /* MovieList.swift in Sources */,
 				26A921A31D2B1358003D4D09 /* MovieGrid.swift in Sources */,
 				260BCE9B1D2DB11A006101D0 /* HomeListCell.swift in Sources */,

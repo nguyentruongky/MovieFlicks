@@ -11,17 +11,28 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int { return 1 }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return movies.count }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return movies.count + 1}
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieTableCell", forIndexPath: indexPath) as! MovieTableCell
-        cell.setup(movies[indexPath.row])
+        
+        if indexPath.row == movies.count {
+            cell.showLoading(true)
+            loadMoreDelegate.loadMore()
+        }
+        else {
+            cell.showLoading(false)
+            cell.setup(movies[indexPath.row])    
+        }
+        
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.lightGrayColor().colorWithAlphaComponent(0.1) : UIColor.lightGrayColor().colorWithAlphaComponent(0.25)
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        guard indexPath.row != movies.count else { return }
         delegate.showMovieDetail(movies[indexPath.row])
     }
     
