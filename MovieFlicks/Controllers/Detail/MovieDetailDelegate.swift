@@ -31,9 +31,10 @@ struct MovieDetailCommunication {
         let api = "https://api.themoviedb.org/3/movie/\(id)"
         Communicator.get(api, params: nil, successCompletion: { (rawData) in
             
-                let runtime = rawData["runtime"] as! Int
+            let runtime = rawData["runtime"] as? Int
+            if let runtime = runtime {
                 successHandler(runTime: runtime)
-            
+            }
             }, failCompletion: nil)
     }
 

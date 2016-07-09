@@ -69,8 +69,28 @@ extension MovieListViewController: HomeSectionDelegate, LoadMoviesDelegate {
     }
 }
 
-extension MovieListViewController: SearchDelegate {
+extension MovieListViewController: SearchDelegate, UISearchBarDelegate {
     
+    func showSearchBar(show: Bool) {
+        
+        if show {
+            UIView.animateWithDuration(0.15, animations: { [unowned self] in
+                self.searchBarTop.constant = 0
+                self.view.layoutIfNeeded()
+            })
+            searchBar.hidden = false
+        }
+        else {
+            UIView.animateWithDuration(0.15, animations: { [unowned self] in
+                self.searchBarTop.constant = -44
+                self.view.layoutIfNeeded()
+            })
+            searchBar.resignFirstResponder()
+            searchBar.hidden = true
+        }
+    }
+    
+    // empty
     func searchWithKeyword(key: String) {
        
     }
@@ -117,6 +137,13 @@ extension MovieListViewController: SearchDelegate {
         movieList.hidden = true
         movieGrid.hidden = true
     }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        let search = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SearchController") as! SearchController
+        let nav = UINavigationController(rootViewController: search)
+        presentViewController(nav, animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -130,7 +157,7 @@ extension MovieListViewController: SearchDelegate {
 
 
 
-
+    
 
 
 

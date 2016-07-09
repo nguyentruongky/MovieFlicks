@@ -19,10 +19,11 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var movieGrid: MovieGrid!
     @IBOutlet weak var movieList: MovieList!
     @IBOutlet weak var viewModeButton: UIBarButtonItem!
+    @IBOutlet weak var searchBar: UISearchBar!
 
+    @IBOutlet weak var searchBarTop: NSLayoutConstraint!
     @IBOutlet weak var emptyView: UIView!
     lazy var movies = [Movie]()
-    lazy var sourceMovies = [Movie]()
     var currentPage = 1
     var shouldLoadMore = true
     var isLoading = false
@@ -30,7 +31,7 @@ class MovieListViewController: UIViewController {
     var delegate: HomeSectionDelegate!
     var filterData = MovieFilter()
     var searchParam: [String: AnyObject]!
-    
+
     internal var viewMode = ViewMode.ListView
     
     override func viewDidLoad() {
@@ -40,10 +41,13 @@ class MovieListViewController: UIViewController {
         movieList.setup(movies)
         movieList.delegate = self
         movieList.loadMoreDelegate = self
+        movieList.searchDelegate = self
         
         movieGrid.delegate = self
         movieGrid.loadMoreDelegate = self
+        movieGrid.searchDelegate = self
         movieGrid.hidden = true
+        searchBar.delegate = self
     }
     
     @IBAction func filter(sender: AnyObject) {

@@ -26,4 +26,6 @@ protocol SearchDelegate {
     func searchWithKeyword(key: String)
     
     func didFilterWithData(filterData: MovieFilter)
+    
+    func showSearchBar(show: Bool)
 }

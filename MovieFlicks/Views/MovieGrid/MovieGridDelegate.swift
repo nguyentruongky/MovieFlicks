@@ -28,6 +28,10 @@ extension MovieGrid : UICollectionViewDelegate, UICollectionViewDataSource, UICo
         }
         return cell
     }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        searchDelegate.showSearchBar(scrollView.contentOffset.y <= 0)
+    }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         delegate.showMovieDetail(movies[indexPath.row])

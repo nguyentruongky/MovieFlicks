@@ -14,6 +14,7 @@ class MovieGrid: KViewBase {
     var movies: [Movie]!
     var delegate: HomeSectionDelegate!
     var loadMoreDelegate : LoadMoviesDelegate!
+    var searchDelegate : SearchDelegate!
 
     override func setupView() {
         collectionView.registerNib(UINib(nibName: "MovieCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "MovieCollectionCell")

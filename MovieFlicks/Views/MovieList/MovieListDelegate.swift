@@ -11,7 +11,10 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int { return 1 }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return movies.count + 1}
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return movies.count == 0 ? 0 : movies.count + 1
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -34,6 +37,10 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard indexPath.row != movies.count else { return }
         delegate.showMovieDetail(movies[indexPath.row])
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        searchDelegate.showSearchBar(scrollView.contentOffset.y <= 0)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
