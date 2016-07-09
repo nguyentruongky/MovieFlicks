@@ -36,6 +36,10 @@ class MovieListViewController: UIViewController {
         movieGrid.hidden = true
     }
     
+    @IBAction func filter(sender: AnyObject) {
+        
+    }
+    
     @IBAction func changeViewMode() {
         
         viewMode = viewMode == .ListView ? .GridView : .ListView

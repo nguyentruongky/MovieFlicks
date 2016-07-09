@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -203,11 +204,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="tXC-r1-dRN">
                         <barButtonItem key="backBarButtonItem" title="Back" id="hGZ-3S-aIh"/>
-                        <barButtonItem key="rightBarButtonItem" image="gridview" id="2Uj-HS-7DD">
-                            <connections>
-                                <action selector="changeViewMode" destination="L81-k8-l5g" id="3sn-8v-w3y"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="filter" id="qsi-9h-TUl">
+                                <connections>
+                                    <action selector="filter:" destination="L81-k8-l5g" id="8RH-PA-vhQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="gridview" id="2Uj-HS-7DD">
+                                <connections>
+                                    <action selector="changeViewMode" destination="L81-k8-l5g" id="3sn-8v-w3y"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -468,6 +476,7 @@
     <resources>
         <image name="clock" width="25" height="25"/>
         <image name="crown" width="25" height="25"/>
+        <image name="filter" width="22" height="22"/>
         <image name="gridview" width="22" height="22"/>
     </resources>
 </document>
