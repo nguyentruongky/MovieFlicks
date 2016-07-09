@@ -202,6 +202,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tXC-r1-dRN">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="hGZ-3S-aIh"/>
                         <barButtonItem key="rightBarButtonItem" image="gridview" id="2Uj-HS-7DD">
                             <connections>
                                 <action selector="changeViewMode" destination="L81-k8-l5g" id="3sn-8v-w3y"/>
@@ -217,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IH-d8-Ob3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1629" y="324"/>
+            <point key="canvasLocation" x="2150" y="324"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V78-fw-m9T">
@@ -461,7 +462,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2141" y="324"/>
+            <point key="canvasLocation" x="2953" y="324"/>
         </scene>
     </scenes>
     <resources>

@@ -34,7 +34,9 @@ extension MovieListViewController: HomeSectionDelegate, LoadMoreMoviesDelegate {
             }
             
             self.movies.appendContentsOf(data.movies)
-            self.movieList.setup(self.movies)
+            self.viewMode == ViewMode.GridView ?
+                self.movieGrid.setup(self.movies) :
+                self.movieList.setup(self.movies)
             
             }) { [unowned self] (message) in
                 self.isLoading = false

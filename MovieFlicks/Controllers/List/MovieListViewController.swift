@@ -30,9 +30,9 @@ class MovieListViewController: UIViewController {
         movieList.setup(movies)
         movieList.delegate = self
         movieList.loadMoreDelegate = self
-        movieList.api = api
         
         movieGrid.delegate = self
+        movieGrid.loadMoreDelegate = self
         movieGrid.hidden = true
     }
     

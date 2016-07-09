@@ -12,12 +12,20 @@ extension MovieGrid : UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int { return 1 }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return movies.count }
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return movies.count + 1 }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MovieCollectionCell", forIndexPath: indexPath) as! MovieCollectionCell
-        cell.setup(movies[indexPath.row])
+        
+        if indexPath.row == movies.count {
+            cell.showLoading(true)
+            loadMoreDelegate.loadMore()
+        }
+        else {
+            cell.showLoading(false)
+            cell.setup(movies[indexPath.row])
+        }
         return cell
     }
     
