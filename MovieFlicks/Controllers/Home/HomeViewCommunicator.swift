@@ -16,7 +16,7 @@ struct HomeViewCommunicator {
         let api = "https://api.themoviedb.org/3/movie/now_playing"
         Communicator.get(api, params: ["page": String(page)], successCompletion: { (rawData) in
             
-            let data = parseData(rawData)
+            let data = Communicator.parseMovieData(rawData)
             successCompletion(movies: data.movies, totalPage: data.totalPage)
             }) { (message) in
                 failCompletion?(message: message)
@@ -28,7 +28,7 @@ struct HomeViewCommunicator {
         let api = "https://api.themoviedb.org/3/movie/top_rated"
         Communicator.get(api, params: ["page": String(page)], successCompletion: { (rawData) in
             
-            let data = parseData(rawData)
+            let data = Communicator.parseMovieData(rawData)
             successCompletion(movies: data.movies, totalPage: data.totalPage)
         }) { (message) in
             failCompletion?(message: message)
@@ -36,18 +36,5 @@ struct HomeViewCommunicator {
 
     }
     
-    static func parseData(rawData: AnyObject) -> (movies: [Movie], totalPage: Int) {
-        let totalPage = rawData["total_pages"] as! Int
-        let results = rawData["results"] as! [AnyObject]
-        var movies = [Movie]()
-        for result in results {
-            let poster = result["poster_path"] as? String
-            let backdrop = result["backdrop_path"] as? String
-            guard backdrop != nil || poster != nil else { continue }
-            
-            movies.append(Movie(rawData: result))
-        }
-
-        return (movies, totalPage)
-    }
+   
 }

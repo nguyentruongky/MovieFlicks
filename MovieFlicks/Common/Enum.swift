@@ -11,7 +11,3 @@ import Foundation
 enum ViewMode: Int {
     case ListView, GridView
 }
-
-enum ListKind : String {
-    case NowPlaying, TopRated
-}

@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol HomeSectionDelegate {
- 
-    func showListWithData(movies: [Movie], title: String, api: String)
-    
-    func showMovieDetail(movie: Movie)
-}
 extension HomeListCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int { return 1 }

@@ -34,6 +34,15 @@ extension UIViewController {
     }
 }
 
+extension UIImageView {
+    
+    func downloadImageWithUrlString(urlString: String) {
+        
+        let url = NSURL(string: urlString)
+        self.kf_setImageWithURL(url!, placeholderImage: UIImage(named: "broken"))
+    }
+}
+
 extension UIView {
     
     func removeSelf() {

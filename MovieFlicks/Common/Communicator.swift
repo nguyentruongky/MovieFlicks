@@ -26,13 +26,22 @@ struct Communicator {
                 successCompletion(rawData: rawData)
         }
     }
-}
-
-extension UIImageView {
     
-    func downloadImageWithUrlString(urlString: String) {
+    static func parseMovieData(rawData: AnyObject) -> (movies: [Movie], totalPage: Int) {
         
-        let url = NSURL(string: urlString)
-        self.kf_setImageWithURL(url!, placeholderImage: UIImage(named: "broken"))
+        let totalPage = rawData["total_pages"] as? Int
+        let results = rawData["results"] as! [AnyObject]
+        var movies = [Movie]()
+        for result in results {
+            let poster = result["poster_path"] as? String
+            let backdrop = result["backdrop_path"] as? String
+            guard backdrop != nil || poster != nil else { continue }
+            
+            movies.append(Movie(rawData: result))
+        }
+        
+        guard let total = totalPage else { return (movies, 0) }
+        return (movies, total)
     }
 }
+

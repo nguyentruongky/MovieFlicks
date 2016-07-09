@@ -8,5 +8,6 @@ target 'MovieFlicks' do
    pod 'Alamofire', '~> 3.4'
    pod "PKHUD"
 pod 'Whisper'
+pod 'HorizontalPicker', '~> 2.0'
 end
 

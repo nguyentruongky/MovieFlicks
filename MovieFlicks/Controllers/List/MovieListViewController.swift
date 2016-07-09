@@ -8,18 +8,28 @@
 
 import UIKit
 
+struct MovieFilter {
+    
+    var releaseYear = ""
+    var adult = true
+}
+
 class MovieListViewController: UIViewController {
 
     @IBOutlet weak var movieGrid: MovieGrid!
     @IBOutlet weak var movieList: MovieList!
     @IBOutlet weak var viewModeButton: UIBarButtonItem!
 
+    @IBOutlet weak var emptyView: UIView!
     lazy var movies = [Movie]()
+    lazy var sourceMovies = [Movie]()
     var currentPage = 1
     var shouldLoadMore = true
     var isLoading = false
     var api: String!
     var delegate: HomeSectionDelegate!
+    var filterData = MovieFilter()
+    var searchParam: [String: AnyObject]!
     
     internal var viewMode = ViewMode.ListView
     
@@ -37,7 +47,9 @@ class MovieListViewController: UIViewController {
     }
     
     @IBAction func filter(sender: AnyObject) {
-        
+        let filterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FilterViewController") as! FilterViewController
+        filterVC.filterDelegate = self
+        navigationController?.pushViewController(filterVC, animated: true)
     }
     
     @IBAction func changeViewMode() {
@@ -57,6 +69,13 @@ class MovieListViewController: UIViewController {
         movieGrid.hidden = false
         movieList.hidden = true
         movieGrid.setup(movies)
+    }
+    
+    func reloadMovie() {
+        emptyView.hidden = true
+        viewMode == ViewMode.GridView ?
+            movieGrid.setup(movies)  :
+            movieList.setup(movies)
     }
 
 
