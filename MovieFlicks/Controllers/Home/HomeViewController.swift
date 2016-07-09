@@ -47,8 +47,7 @@ class HomeViewController: UIViewController {
             self.tableView.reloadData()
         }) { (message) in
             
-            let errorView = ErrorView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 10), message: message)
-            self.view.addSubview(errorView)
+            self.showErrorViewWithMessage(message)
         }
     }
     
@@ -58,7 +57,7 @@ class HomeViewController: UIViewController {
             self.data.append((movies, "Top Rated"))
             self.tableView.reloadData()
         }) { (message) in
-            print(message)
+            self.showErrorViewWithMessage(message)
         }
     }
 

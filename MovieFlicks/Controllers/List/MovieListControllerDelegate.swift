@@ -39,9 +39,7 @@ extension MovieListViewController: HomeSectionDelegate, LoadMoreMoviesDelegate {
                 self.movieList.setup(self.movies)
             
             }) { [unowned self] (message) in
-                self.isLoading = false
-                let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.showErrorViewWithMessage(message)
         }
     }
 }

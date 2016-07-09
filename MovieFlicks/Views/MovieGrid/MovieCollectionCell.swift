@@ -26,7 +26,6 @@ class MovieCollectionCell: UICollectionViewCell {
     func showLoading(show: Bool) {
         
         if show {
-            
             posterImageView.image = UIImage(named: posterPlaceHolderName)
             loadingView.hidesWhenStopped = true
             loadingView.startAnimating()
