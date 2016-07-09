@@ -73,9 +73,15 @@ class MovieListViewController: UIViewController {
     
     func reloadMovie() {
         emptyView.hidden = true
-        viewMode == ViewMode.GridView ?
-            movieGrid.setup(movies)  :
+        
+        if viewMode == ViewMode.GridView {
+            movieGrid.setup(movies)
+            movieGrid.hidden = false
+        }
+        else {
             movieList.setup(movies)
+            movieList.hidden = false
+        }
     }
 
 

@@ -25,7 +25,8 @@ extension MovieListViewController: HomeSectionDelegate, LoadMoviesDelegate {
         
         guard shouldLoadMore && !isLoading else { return }
         isLoading = true
-        searchParam = ["page": String(currentPage)]
+        searchParam = searchParam == nil ? [String: AnyObject]() : searchParam
+        searchParam["page"] = String(currentPage)
         Communicator.get(api, params: searchParam, successCompletion: { [unowned self] (rawData) in
             self.isLoading = false
             self.currentPage += 1
@@ -77,11 +78,13 @@ extension MovieListViewController: SearchDelegate {
     func didFilterWithData(filterData: MovieFilter) {
         
         showLoading(true)
-        var params = [String: AnyObject]()
-        params["query"] = "Fight"
-        params["page"] = "3"
-        params["include_adult"] = String(filterData.adult.hashValue)
-        params["year"] = filterData.releaseYear
+        var params = [String: String]()
+        params["query"] = "All"
+        params["page"] = "5"
+        params["include_adult"] = filterData.adult ? "true" : "false"
+        
+        let year = Int(filterData.releaseYear)! % 2 == 0 ? "" : filterData.releaseYear
+        params["year"] = year
         
         ListCommunicator.filterWithParams(params, complete: { [unowned self] (movies) in
             self.handleFilterComplete(movies, params: params)

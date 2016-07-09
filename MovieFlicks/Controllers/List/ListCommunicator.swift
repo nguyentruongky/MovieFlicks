@@ -26,10 +26,17 @@ struct ListCommunicator {
     static func filterWithParams(params: [String: AnyObject], complete: (movies: [Movie]) -> Void, fail: (message: String) -> Void, empty: () -> ()) {
         let api = "https://api.themoviedb.org/3/search/movie"
         Communicator.get(api, params: params, successCompletion: { (rawData) in
-            let dic = rawData["result"] as? NSDictionary
-            guard dic != nil else {
+            
+            guard let dic = rawData["results"] as? NSArray else {
                 empty()
-                return }
+                return
+            }
+            
+            guard dic.count > 0 else {
+                empty()
+                return
+            }
+            
             let data = Communicator.parseMovieData(rawData)
             complete(movies: data.movies)
             }) { (message) in

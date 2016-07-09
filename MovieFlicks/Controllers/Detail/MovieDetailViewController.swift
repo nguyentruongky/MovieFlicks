@@ -29,7 +29,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = data.title
+        title = data.title?.uppercaseString
         titleLabel.text = data.title
         dateLabel.text = data.releaseDate
         rateLabel.text = String(data.voteAverage!)

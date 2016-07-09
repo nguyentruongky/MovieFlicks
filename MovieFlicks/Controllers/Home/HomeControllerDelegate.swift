@@ -39,7 +39,7 @@ extension HomeViewController: HomeSectionDelegate {
     func showListWithData(movies: [Movie], title: String, api: String) {
         let controller = UIStoryboard(name: sb_Main, bundle: nil).instantiateViewControllerWithIdentifier("MovieListViewController") as! MovieListViewController
         controller.movies = movies
-        controller.title = title
+        controller.title = title.uppercaseString
         controller.delegate = self
         controller.api = api
         navigationController?.pushViewController(controller, animated: true)
