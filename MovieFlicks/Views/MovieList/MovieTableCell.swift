@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
-class MovieTableCell: UITableViewCell {
+class MovieTableCell: MGSwipeTableCell {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,6 +19,8 @@ class MovieTableCell: UITableViewCell {
     @IBOutlet weak var titleLoadingView: UIView!
     @IBOutlet weak var titleLoading: UIActivityIndicatorView!
     @IBOutlet weak var overviewLoading: UIActivityIndicatorView!
+    
+    @IBOutlet weak var loveIcon: UIImageView!
     
     func showLoading(show: Bool) {
         
@@ -37,6 +40,11 @@ class MovieTableCell: UITableViewCell {
         }
         
         titleLoadingView.hidden = !show
+    }
+    
+    override func prepareForReuse() {
+        posterImageView.image = UIImage(named: "broken")
+        loveIcon.hidden = false
     }
     
     func setup(movie: Movie) {

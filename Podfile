@@ -7,7 +7,8 @@ target 'MovieFlicks' do
    pod 'Kingfisher', '~> 2.4'
    pod 'Alamofire', '~> 3.4'
    pod "PKHUD"
-pod 'Whisper'
-pod 'HorizontalPicker', '~> 2.0'
+   pod 'Whisper'
+   pod 'HorizontalPicker', '~> 2.0'
+   pod 'MGSwipeTableCell'
 end
 
