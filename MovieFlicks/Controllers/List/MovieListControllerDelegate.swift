@@ -97,47 +97,24 @@ extension MovieListViewController: SearchDelegate, UISearchBarDelegate {
     
     func didFilterWithData(filterData: MovieFilter) {
         
-        showLoading(true)
-        var params = [String: String]()
-        params["query"] = "All"
-        params["page"] = "5"
-        params["include_adult"] = filterData.adult ? "true" : "false"
-        
-        let year = Int(filterData.releaseYear)! % 2 == 0 ? "" : filterData.releaseYear
-        params["year"] = year
-        
-        ListCommunicator.filterWithParams(params, complete: { [unowned self] (movies) in
-            self.handleFilterComplete(movies, params: params)
-            }, fail: { [unowned self] (message) in
-                self.handleFilterFail(message)
-            }) { [unowned self] in // empty
-                self.handleFilterEmptyState()
-        }
+//        showLoading(true)
+//        var params = [String: String]()
+//        params["query"] = "All"
+//        params["page"] = "5"
+//        params["include_adult"] = filterData.adult ? "true" : "false"
+//        
+//        let year = Int(filterData.releaseYear)! % 2 == 0 ? "" : filterData.releaseYear
+//        params["year"] = year
+//        
+//        ListCommunicator.filterWithParams(params, complete: { [unowned self] (movies) in
+//            self.handleFilterComplete(movies, params: params)
+//            }, fail: { [unowned self] (message) in
+//                self.handleFilterFail(message)
+//            }) { [unowned self] in // empty
+//                self.handleFilterEmptyState()
+//        }
     }
-    
-    func handleFilterComplete(movies: [Movie], params: [String: AnyObject]) {
-        
-        self.showLoading(false)
-        self.api = "https://api.themoviedb.org/3/search/movie"
-        self.searchParam = params
-        self.movies = movies
-        self.reloadMovie()
-    }
-    
-    func handleFilterFail(message: String) {
-        showLoading(false)
-        showErrorViewWithMessage(message)
-    }
-    
-    func handleFilterEmptyState() {
-        showLoading(false)
-        movies.removeAll()
-        reloadMovie()
-        emptyView.hidden = false
-        movieList.hidden = true
-        movieGrid.hidden = true
-    }
-    
+
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         let search = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SearchController") as! SearchController
         let nav = UINavigationController(rootViewController: search)

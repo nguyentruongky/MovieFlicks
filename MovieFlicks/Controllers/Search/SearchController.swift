@@ -31,10 +31,17 @@ class SearchController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBarHidden = true
+        navigationController?.navigationBarHidden = false
+        title = "SEARCH"
         movieList.delegate = self
         movieList.loadMoreDelegate = self
         movieList.searchDelegate = self
+    }
+    
+    @IBAction func showFilterSetting(sender: AnyObject) {
+        let filter = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FilterViewController") as! FilterViewController
+        filter.filterDelegate = self
+        navigationController?.pushViewController(filter, animated: true)
     }
     
     func getFilterData() -> (year: String, allowAdult: Bool) {

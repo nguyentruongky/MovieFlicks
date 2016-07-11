@@ -28,44 +28,63 @@ extension SearchController : SearchDelegate {
     
     func searchWithKeyword(key: String) {
         
-        print("start search")
         loading.hidden = false
         loading.startAnimating()
         
         let filterData = getFilterData()
         searchParam = searchParam == nil ? [String: AnyObject]() : searchParam
         searchParam["query"] = key
-        searchParam["page"] = "5"
+        searchParam["page"] = "1"
         searchParam["include_adult"] = filterData.allowAdult ? "true" : "false"
-        let year = Int(filterData.year)! % 2 == 0 ? "" : filterData.year
-        searchParam["year"] = year
+        searchParam["primary_release_year"] = filterData.year
         
-        SearchCommunicator.searchWithKeyword(key, params: searchParam, complete: { [unowned self] (movieIds) in
-            self.loading.stopAnimating()
-            self.movieList.setup(self.movies)
-            self.emptyView.hidden = true
-            self.movieList.hidden = false
-            self.shouldLoadMore = false
-            
-            for id in movieIds {
-                
-                SearchCommunicator.getMovieDataWithId(id, complete: { (movie) in
-                    self.movies.append(movie)
-                    self.movieList.setup(self.movies)
-                })
-            }
+        ListCommunicator.filterWithParams(searchParam, complete: { [unowned self] (movies) in
+            self.handleFilterComplete(movies, params: self.searchParam)
             }, fail: { [unowned self] (message) in
-                self.loading.stopAnimating()
-                self.showErrorViewWithMessage(message)
-            }) { [unowned self] in
-                self.loading.stopAnimating()
-                self.searchBar.resignFirstResponder()
-                self.emptyView.hidden = false
+                self.handleFilterFail(message)
+        }) { [unowned self] in // empty
+            self.handleFilterEmptyState()
         }
     }
     
-    // empty func
-    func didFilterWithData(filterData: MovieFilter) { }
+    func didFilterWithData(filterData: MovieFilter) {
+    
+        searchParam = searchParam == nil ? [String: AnyObject]() : searchParam
+        searchParam["query"] = searchBar.text!
+        searchParam["page"] = "1"
+        searchParam["include_adult"] = filterData.adult
+        searchParam["primary_release_year"] = filterData.releaseYear
+        
+        ListCommunicator.filterWithParams(searchParam, complete: { [unowned self] (movies) in
+            self.handleFilterComplete(movies, params: self.searchParam)
+            }, fail: { [unowned self] (message) in
+                self.handleFilterFail(message)
+        }) { [unowned self] in // empty
+            self.handleFilterEmptyState()
+        }
+    }
+    
+    func handleFilterComplete(movies: [Movie], params: [String: AnyObject]) {
+        
+        loading.stopAnimating()
+        api = "https://api.themoviedb.org/3/search/movie"
+        searchParam = params
+        self.movies = movies
+        emptyView.hidden = true 
+        movieList.setup(movies)
+    }
+    
+    func handleFilterFail(message: String) {
+        showLoading(false)
+        showErrorViewWithMessage(message)
+    }
+    
+    func handleFilterEmptyState() {
+        showLoading(false)
+        movies.removeAll()
+        emptyView.hidden = false
+    }
+    
     
     func showSearchBar(show: Bool) {
         searchBar.resignFirstResponder()
@@ -128,8 +147,6 @@ extension SearchController : HomeSectionDelegate {
         navigationController?.pushViewController(controller, animated: true)
     }
 }
-
-
 
 
 
