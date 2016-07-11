@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
 class MovieList: KViewBase {
     @IBOutlet weak var tableView: UITableView!
@@ -14,14 +15,30 @@ class MovieList: KViewBase {
     
     var refreshControl: UIRefreshControl!
     
+    var presentController: ((controller: UIViewController) -> Void)?
     var delegate: HomeSectionDelegate!
     var loadMoreDelegate : LoadMoviesDelegate!
     var searchDelegate : SearchDelegate!
+
+    var favouriteButton : MGSwipeButton!
+    
+    lazy var favouriteList = [Int]()
     
     override func setupView() {
         tableView.registerNib(UINib(nibName: "MovieTableCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "MovieTableCell")
         
         setupRefresh()
+        
+        favouriteButton = MGSwipeButton(title: "  Like  ", backgroundColor: UIColor.redColor()) { [unowned self] (cell) -> Bool in
+            
+            let index = self.tableView.indexPathForCell(cell)!
+            let favouriteTitle = self.movies[index.row].favourite ?
+                "  Like  " : "Unlike"
+                
+            self.favouriteButton.setTitle(favouriteTitle, forState: .Normal)
+            self.markFavourite(index.row, movieCell: cell as! MovieTableCell)
+            return true
+        }
     }
     
     func setupRefresh() {

@@ -20,6 +20,7 @@ class MovieTableCell: MGSwipeTableCell {
     @IBOutlet weak var titleLoading: UIActivityIndicatorView!
     @IBOutlet weak var overviewLoading: UIActivityIndicatorView!
     
+    
     @IBOutlet weak var loveIcon: UIImageView!
     
     func showLoading(show: Bool) {
@@ -45,6 +46,7 @@ class MovieTableCell: MGSwipeTableCell {
     override func prepareForReuse() {
         posterImageView.image = UIImage(named: "broken")
         loveIcon.hidden = false
+        loveIcon.image = UIImage()
     }
     
     func setup(movie: Movie) {
@@ -52,6 +54,8 @@ class MovieTableCell: MGSwipeTableCell {
             posterImageView.image = UIImage(named: "broken")
             return
         }
+        
+        loveIcon.hidden = !movie.favourite
         titleLabel.text = movie.title
         overviewLabel.text = movie.overview
         posterImageView.kf_showIndicatorWhenLoading = true

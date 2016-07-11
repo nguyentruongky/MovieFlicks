@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Movie {
+class Movie {
     var title: String?
     var poster: String?
     var overview: String?
@@ -16,6 +16,7 @@ struct Movie {
     var runtime: Int?
     var releaseDate: String?
     var voteAverage: Double?
+    var favourite = false 
     
     init(rawData: AnyObject) {
         

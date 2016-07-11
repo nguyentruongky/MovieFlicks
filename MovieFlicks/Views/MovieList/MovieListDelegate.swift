@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MGSwipeTableCell
+
 extension MovieList: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int { return 1 }
@@ -29,6 +31,18 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
             cell.setup(movies[indexPath.row])    
         }
         
+        // share button
+        let shareButton = MGSwipeButton(title: "Share", backgroundColor: UIColor.lightGrayColor()) { (cell) -> Bool in
+            self.share()
+            return true
+        }
+        cell.leftButtons = [shareButton]
+        cell.leftSwipeSettings.transition = MGSwipeTransition.Drag
+        
+        //favourite button
+        cell.rightButtons = [favouriteButton]
+        cell.rightSwipeSettings.transition = MGSwipeTransition.Drag
+
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.lightGrayColor().colorWithAlphaComponent(0.1) : UIColor.lightGrayColor().colorWithAlphaComponent(0.25)
         
         return cell

@@ -42,6 +42,10 @@ class MovieListViewController: UIViewController {
         movieList.delegate = self
         movieList.loadMoreDelegate = self
         movieList.searchDelegate = self
+        movieList.presentController = { controller in
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
         
         movieGrid.delegate = self
         movieGrid.loadMoreDelegate = self
