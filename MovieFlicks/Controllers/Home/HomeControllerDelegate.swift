@@ -26,6 +26,22 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         return cell
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        let currentY =  scrollView.contentOffset.y
+        if currentY < 0 {
+            fakeView.hidden = false
+            headerView.hidden = true
+            let scaleRatio = -currentY / 110 + 1
+            fakeImage.image = headerImageView.image
+            fakeImage.transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleRatio, scaleRatio)
+        }
+        else {
+            fakeView.hidden = true
+            headerView.hidden = false
+        }
+    }
 }
 
 extension HomeViewController: HomeSectionDelegate {

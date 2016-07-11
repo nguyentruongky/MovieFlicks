@@ -19,6 +19,9 @@ class HomeViewController: UIViewController {
     var apis = ["https://api.themoviedb.org/3/movie/now_playing",
                 "https://api.themoviedb.org/3/movie/top_rated"]
     
+    @IBOutlet weak var fakeView: UIView!
+    @IBOutlet weak var fakeImage: UIImageView!
+    
     lazy var data : [(movies: [Movie], title: String)] = [(movies: [Movie], title: String)]()
     
     override func viewDidLoad() {
@@ -32,6 +35,7 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = true
+        fakeView.hidden = true
     }
     
     func fetchNowPlayingMovies() {
@@ -70,6 +74,7 @@ class HomeViewController: UIViewController {
         tableView.tableHeaderView = self.headerView
         headerImageView.downloadImageWithUrlString("\(largePoster)\(movie.poster!)")
         viewHeaderButton.addTarget(self, action: #selector(viewHottestMovie), forControlEvents: .TouchUpInside)
+        fakeImage.downloadImageWithUrlString("\(largePoster)\(movie.poster!)")
     }
     
     func viewHottestMovie() {

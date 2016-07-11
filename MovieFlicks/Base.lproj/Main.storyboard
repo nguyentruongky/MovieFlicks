@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -124,18 +125,48 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PRH-Tw-nLZ"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shI-pB-NSj">
+                                <rect key="frame" x="0.0" y="64" width="320" height="250"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RQ4-V9-klo">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="226"/>
+                                        <color key="backgroundColor" red="0.98431372549999996" green="0.23529411759999999" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="RQ4-V9-klo" firstAttribute="top" secondItem="shI-pB-NSj" secondAttribute="top" id="4eY-cb-wHV"/>
+                                    <constraint firstAttribute="trailing" secondItem="RQ4-V9-klo" secondAttribute="trailing" id="4v4-XP-Tyd"/>
+                                    <constraint firstItem="RQ4-V9-klo" firstAttribute="leading" secondItem="shI-pB-NSj" secondAttribute="leading" id="GUu-iz-h2A"/>
+                                    <constraint firstAttribute="bottom" secondItem="RQ4-V9-klo" secondAttribute="bottom" constant="24" id="J3T-Og-9d6"/>
+                                    <constraint firstAttribute="height" constant="250" id="YeM-Rx-0xG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ihr-q6-nRH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="3XF-KR-KV0"/>
+                            <constraint firstAttribute="trailing" secondItem="shI-pB-NSj" secondAttribute="trailing" id="9fr-pb-luh"/>
                             <constraint firstAttribute="bottom" secondItem="ihr-q6-nRH" secondAttribute="bottom" id="O4b-1X-F58"/>
                             <constraint firstItem="ihr-q6-nRH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Y94-7K-muc"/>
+                            <constraint firstItem="shI-pB-NSj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Zq5-Lm-szd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="shI-pB-NSj" secondAttribute="trailing" id="bCH-gl-XhA"/>
+                            <constraint firstItem="shI-pB-NSj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mRI-Gu-pA4"/>
                             <constraint firstAttribute="trailing" secondItem="ihr-q6-nRH" secondAttribute="trailing" id="qad-Lk-F4c"/>
+                            <constraint firstItem="shI-pB-NSj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vVf-2y-e2h"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bCH-gl-XhA"/>
+                                <exclude reference="vVf-2y-e2h"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="cha-V7-ere"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="fakeImage" destination="RQ4-V9-klo" id="qVR-Et-HrY"/>
+                        <outlet property="fakeView" destination="shI-pB-NSj" id="eyj-EL-ha7"/>
                         <outlet property="headerImageView" destination="VVY-ST-ODj" id="ZIm-fb-LSG"/>
                         <outlet property="headerView" destination="DEZ-AP-jUB" id="C0k-R3-hdL"/>
                         <outlet property="tableView" destination="ihr-q6-nRH" id="8Tj-1q-da3"/>
