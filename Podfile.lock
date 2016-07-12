@@ -1,0 +1,25 @@
+PODS:
+  - Alamofire (3.4.1)
+  - HorizontalPicker (2.0.2)
+  - Kingfisher (2.4.1)
+  - MGSwipeTableCell (1.5.5)
+  - PKHUD (3.2.1)
+  - Whisper (3.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4)
+  - HorizontalPicker (~> 2.0)
+  - Kingfisher (~> 2.4)
+  - MGSwipeTableCell
+  - PKHUD
+  - Whisper
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  HorizontalPicker: 0b46d4ebca2004491e29d366f676f573cc36bf7d
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  MGSwipeTableCell: bafeb5f351124544c9364ecbdf24c7b06a37d340
+  PKHUD: 001c11518f125a273ddf026bcc64918423744ea2
+  Whisper: 42a3ee7c2936f861b23d41bd6cd7dfd22f102405
+
+COCOAPODS: 0.39.0
