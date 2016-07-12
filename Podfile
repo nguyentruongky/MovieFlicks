@@ -10,5 +10,6 @@ target 'MovieFlicks' do
    pod 'Whisper'
    pod 'HorizontalPicker', '~> 2.0'
    pod 'MGSwipeTableCell'
+   pod 'RealmSwift', '~> 0.98'
 end
 

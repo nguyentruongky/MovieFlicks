@@ -46,7 +46,7 @@ class MovieTableCell: MGSwipeTableCell {
     override func prepareForReuse() {
         posterImageView.image = UIImage(named: "broken")
         loveIcon.hidden = false
-        loveIcon.image = UIImage()
+//        loveIcon.image = UIImage()
     }
     
     func setup(movie: Movie) {
@@ -55,10 +55,12 @@ class MovieTableCell: MGSwipeTableCell {
             return
         }
         
-        loveIcon.hidden = !movie.favourite
+//        loveIcon.hidden = !movie.favourite
         titleLabel.text = movie.title
         overviewLabel.text = movie.overview
         posterImageView.kf_showIndicatorWhenLoading = true
         posterImageView.downloadImageWithUrlString("\(smallPoster)\(poster)")
+        
+
     }
 }

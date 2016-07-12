@@ -4,6 +4,11 @@ PODS:
   - Kingfisher (2.4.1)
   - MGSwipeTableCell (1.5.5)
   - PKHUD (3.2.1)
+  - Realm (0.103.2):
+    - Realm/Headers (= 0.103.2)
+  - Realm/Headers (0.103.2)
+  - RealmSwift (0.103.2):
+    - Realm (= 0.103.2)
   - Whisper (3.0.0)
 
 DEPENDENCIES:
@@ -12,6 +17,7 @@ DEPENDENCIES:
   - Kingfisher (~> 2.4)
   - MGSwipeTableCell
   - PKHUD
+  - RealmSwift (~> 0.98)
   - Whisper
 
 SPEC CHECKSUMS:
@@ -20,6 +26,8 @@ SPEC CHECKSUMS:
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   MGSwipeTableCell: bafeb5f351124544c9364ecbdf24c7b06a37d340
   PKHUD: 001c11518f125a273ddf026bcc64918423744ea2
+  Realm: 448f0416079fe5b0ed947e7d86f3c4e1c75826cb
+  RealmSwift: 8a45cc8f02dfac093b72a3b5a01d567e27e15891
   Whisper: 42a3ee7c2936f861b23d41bd6cd7dfd22f102405
 
 COCOAPODS: 0.39.0

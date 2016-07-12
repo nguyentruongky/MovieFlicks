@@ -8,6 +8,8 @@
 
 import UIKit
 import Social
+import Realm
+import RealmSwift
 
 extension MovieList {
     
@@ -60,24 +62,37 @@ extension MovieList {
     func markFavourite(rowIndex: Int, movieCell: MovieTableCell) {
         
         var favourite = false
-        if let index = self.favouriteList.indexOf(rowIndex) {
-            self.favouriteList.removeAtIndex(index)
+        let movie = self.movies[rowIndex]
+        
+        let realm = try! Realm()
+        let array = favouriteList.filter("id = \(movie.id!)")
+        if array.count > 0 {
+            
+            for item in array {
+                try! realm.write {
+                    realm.delete(item)
+                }
+            }
         }
         else {
-            self.favouriteList.append(rowIndex)
-            favourite = true
+            try! realm.write {
+                realm.add(FavouriteMovie(id: movie.id!))
+            }
+            favourite = true 
         }
-        
-        let movie = self.movies[rowIndex]
         movie.favourite = favourite
         movieCell.loveIcon.hidden = false
-        animateFavouriteIcon(movieCell.loveIcon, withIconSource: movie.favourite ? UIImage(named: "love") : nil)
+        animateFavouriteIcon(movieCell.loveIcon, show: favourite)
     }
 
-    func animateFavouriteIcon(icon: UIImageView, withIconSource imageSource: UIImage?) {
+    func isFavouriteMovie(movieId: Int) -> Bool {
+        return favouriteList.filter("id = \(movieId)").count > 0
+    }
+    
+    func animateFavouriteIcon(icon: UIImageView, show: Bool) {
         
         icon.transform = CGAffineTransformMakeScale(0.1, 0.1)
-        icon.image = imageSource
+        icon.alpha = show ? 1 : 0
         UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity:32, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
             
             icon.transform = CGAffineTransformIdentity

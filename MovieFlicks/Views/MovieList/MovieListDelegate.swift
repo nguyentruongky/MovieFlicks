@@ -28,7 +28,10 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
         }
         else {
             cell.showLoading(false)
-            cell.setup(movies[indexPath.row])    
+            let movie = movies[indexPath.row]
+            cell.setup(movie)
+            cell.loveIcon.alpha = isFavouriteMovie(movie.id!) ? 1 : 0
+//            cell.loveIcon.image = isFavouriteMovie(movie.id!) ? UIImage(named: "love") : nil
         }
         
         // share button
@@ -42,7 +45,7 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
         //favourite button
         cell.rightButtons = [favouriteButton]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Drag
-
+        cell.delegate = self
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor.lightGrayColor().colorWithAlphaComponent(0.1) : UIColor.lightGrayColor().colorWithAlphaComponent(0.25)
         
         return cell
@@ -60,4 +63,18 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 150
     }
+}
+
+extension MovieList : MGSwipeTableCellDelegate {
+    func swipeTableCellWillBeginSwiping(cell: MGSwipeTableCell!) {
+        
+        let indexPath = tableView.indexPathForCell(cell)
+        if let indexPath = indexPath {
+            let movie = movies[indexPath.row]
+            let buttonTitle = isFavouriteMovie(movie.id!) ? "Unlike" : "Like"
+            (cell.rightButtons[0] as! MGSwipeButton).setTitle(buttonTitle, forState: .Normal)
+        }
+        
+    }
+    
 }

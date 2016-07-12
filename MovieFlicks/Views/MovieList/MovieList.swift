@@ -8,13 +8,28 @@
 
 import UIKit
 import MGSwipeTableCell
+import RealmSwift
+
+class FavouriteMovie : Object {
+    dynamic var id: Int = 0
+    
+    convenience init(id: Int) {
+        self.init()
+        self.id = id
+    }
+//    dynamic var title: String = ""
+//    dynamic var poster : String = ""
+//    dynamic var overview : String = ""
+}
 
 class MovieList: KViewBase {
     @IBOutlet weak var tableView: UITableView!
     var movies = [Movie]()
+    let realm = try! Realm()
+    
+    lazy var favouriteList: Results<FavouriteMovie> = { self.realm.objects(FavouriteMovie.self) }()
     
     var refreshControl: UIRefreshControl!
-    
     var presentController: ((controller: UIViewController) -> Void)?
     var delegate: HomeSectionDelegate!
     var loadMoreDelegate : LoadMoviesDelegate!
@@ -22,20 +37,16 @@ class MovieList: KViewBase {
 
     var favouriteButton : MGSwipeButton!
     
-    lazy var favouriteList = [Int]()
+//    lazy var favouriteList = [Int]()
     
     override func setupView() {
         tableView.registerNib(UINib(nibName: "MovieTableCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "MovieTableCell")
         
         setupRefresh()
-        
+
         favouriteButton = MGSwipeButton(title: "  Like  ", backgroundColor: UIColor.redColor()) { [unowned self] (cell) -> Bool in
             
             let index = self.tableView.indexPathForCell(cell)!
-            let favouriteTitle = self.movies[index.row].favourite ?
-                "  Like  " : "Unlike"
-                
-            self.favouriteButton.setTitle(favouriteTitle, forState: .Normal)
             self.markFavourite(index.row, movieCell: cell as! MovieTableCell)
             return true
         }
