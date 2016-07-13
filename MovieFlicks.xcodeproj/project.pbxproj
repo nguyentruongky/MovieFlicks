@@ -12,6 +12,7 @@
 		260BCE9B1D2DB11A006101D0 /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BCE9A1D2DB11A006101D0 /* HomeListCell.swift */; };
 		260BCE9D1D2DB142006101D0 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BCE9C1D2DB142006101D0 /* HomeCollectionCell.swift */; };
 		260BCE9F1D2DB289006101D0 /* HomeListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BCE9E1D2DB289006101D0 /* HomeListCellDelegate.swift */; };
+		262617141D355A18001BDD49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 262617131D355A18001BDD49 /* GoogleService-Info.plist */; };
 		265394B21D340180001210AF /* MovieListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265394B11D340180001210AF /* MovieListAction.swift */; };
 		2665C8E31D3145AF0000F058 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C8E21D3145AF0000F058 /* SearchController.swift */; };
 		2665C8E51D3146240000F058 /* SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665C8E41D3146240000F058 /* SearchDelegate.swift */; };
@@ -68,6 +69,7 @@
 		260BCE9A1D2DB11A006101D0 /* HomeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListCell.swift; sourceTree = "<group>"; };
 		260BCE9C1D2DB142006101D0 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		260BCE9E1D2DB289006101D0 /* HomeListCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListCellDelegate.swift; sourceTree = "<group>"; };
+		262617131D355A18001BDD49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		265394B11D340180001210AF /* MovieListAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListAction.swift; sourceTree = "<group>"; };
 		2665C8E21D3145AF0000F058 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		2665C8E41D3146240000F058 /* SearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		26A921971D2AA464003D4D09 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				262617131D355A18001BDD49 /* GoogleService-Info.plist */,
 				26A921851D2AA459003D4D09 /* AppDelegate.swift */,
 				26A9218C1D2AA459003D4D09 /* Assets.xcassets */,
 				26A9218E1D2AA459003D4D09 /* LaunchScreen.storyboard */,
@@ -376,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26A9219E1D2B12BC003D4D09 /* MovieGrid.xib in Resources */,
+				262617141D355A18001BDD49 /* GoogleService-Info.plist in Resources */,
 				26A921901D2AA459003D4D09 /* LaunchScreen.storyboard in Resources */,
 				26A9218D1D2AA459003D4D09 /* Assets.xcassets in Resources */,
 				260BCE951D2DAB6E006101D0 /* MovieTableCell.xib in Resources */,

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import Firebase
 
 struct MovieFilter {
     
@@ -36,8 +38,7 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBarHidden = false 
+        navigationController?.navigationBarHidden = false
         movieList.setup(movies)
         movieList.delegate = self
         movieList.loadMoreDelegate = self
@@ -45,8 +46,6 @@ class MovieListViewController: UIViewController {
         movieList.presentController = { controller in
             self.presentViewController(controller, animated: true, completion: nil)
         }
-        
-        
         movieGrid.delegate = self
         movieGrid.loadMoreDelegate = self
         movieGrid.searchDelegate = self

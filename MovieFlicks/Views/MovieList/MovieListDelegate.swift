@@ -30,8 +30,8 @@ extension MovieList: UITableViewDelegate, UITableViewDataSource {
             cell.showLoading(false)
             let movie = movies[indexPath.row]
             cell.setup(movie)
-            cell.loveIcon.alpha = isFavouriteMovie(movie.id!) ? 1 : 0
-//            cell.loveIcon.image = isFavouriteMovie(movie.id!) ? UIImage(named: "love") : nil
+            movie.favourite = isFavouriteMovie(movie.id!)
+            cell.loveIcon.alpha = movie.favourite ? 1 : 0
         }
         
         // share button

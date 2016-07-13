@@ -9,6 +9,8 @@
 import UIKit
 import MGSwipeTableCell
 import RealmSwift
+import FirebaseDatabase
+import Firebase
 
 class FavouriteMovie : Object {
     dynamic var id: Int = 0
@@ -26,6 +28,9 @@ class MovieList: KViewBase {
     @IBOutlet weak var tableView: UITableView!
     var movies = [Movie]()
     let realm = try! Realm()
+    var favouriteRef = FIRDatabase.database().reference()
+    var favouriteMovies = [Int]()
+    
     
     lazy var favouriteList: Results<FavouriteMovie> = { self.realm.objects(FavouriteMovie.self) }()
     
@@ -40,6 +45,9 @@ class MovieList: KViewBase {
 //    lazy var favouriteList = [Int]()
     
     override func setupView() {
+        
+        retrieveDataFromFirebase()
+        
         tableView.registerNib(UINib(nibName: "MovieTableCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "MovieTableCell")
         
         setupRefresh()
@@ -52,6 +60,7 @@ class MovieList: KViewBase {
         }
     }
     
+        
     func setupRefresh() {
         refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = UIColor.lightGrayColor()

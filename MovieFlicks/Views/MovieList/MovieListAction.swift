@@ -10,6 +10,8 @@ import UIKit
 import Social
 import Realm
 import RealmSwift
+import FirebaseDatabase
+import Firebase
 
 extension MovieList {
     
@@ -61,32 +63,45 @@ extension MovieList {
     
     func markFavourite(rowIndex: Int, movieCell: MovieTableCell) {
         
-        var favourite = false
         let movie = self.movies[rowIndex]
-        
-        let realm = try! Realm()
-        let array = favouriteList.filter("id = \(movie.id!)")
-        if array.count > 0 {
-            
-            for item in array {
-                try! realm.write {
-                    realm.delete(item)
-                }
-            }
-        }
-        else {
-            try! realm.write {
-                realm.add(FavouriteMovie(id: movie.id!))
-            }
-            favourite = true 
-        }
-        movie.favourite = favourite
         movieCell.loveIcon.hidden = false
-        animateFavouriteIcon(movieCell.loveIcon, show: favourite)
+        saveFavouriteToFirebase(movie.id!, favourite: !movie.favourite)
+        
+        animateFavouriteIcon(movieCell.loveIcon, show: !movie.favourite)
     }
 
+    func retrieveDataFromFirebase() {
+        favouriteRef.child("anonymous/favourite").observeEventType(.Value, withBlock: { (snapshot: FIRDataSnapshot) in
+            
+            if snapshot.value != nil && !(snapshot.value is NSNull) {
+                let dictionary = snapshot.value as! [String: Bool]
+                print(dictionary)
+                var favoritedMovieIds = [Int]()
+                for (key, value) in dictionary {
+                    
+                    if value == true {
+                        favoritedMovieIds.append(Int(key)!)
+                    }
+                }
+                self.favouriteMovies = favoritedMovieIds
+                self.tableView.reloadData()
+            }
+        })
+        
+    }
+
+    
+    func saveFavouriteToFirebase(movieId: Int, favourite: Bool) {
+        
+        favouriteRef.child("anonymous/favourite/\(movieId)").setValue(favourite)
+    }
+    
+    
+    
+    
     func isFavouriteMovie(movieId: Int) -> Bool {
-        return favouriteList.filter("id = \(movieId)").count > 0
+        return favouriteMovies.contains(movieId)
+//        return favouriteList.filter("id = \(movieId)").count > 0
     }
     
     func animateFavouriteIcon(icon: UIImageView, show: Bool) {

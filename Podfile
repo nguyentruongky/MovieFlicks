@@ -11,5 +11,7 @@ target 'MovieFlicks' do
    pod 'HorizontalPicker', '~> 2.0'
    pod 'MGSwipeTableCell'
    pod 'RealmSwift', '~> 0.98'
+   pod 'Firebase'
+   pod 'Firebase/Database’
 end
 
